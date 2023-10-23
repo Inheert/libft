@@ -23,12 +23,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t maxsize)
 		dstlen = maxsize;
 	if (dstlen == maxsize)
 		return (maxsize + srclen);
-	if (srclen < maxsize - dstlen)
-		ft_memcpy(dst + dstlen, src, srclen + 1);
-	else
-	{
-		ft_memcpy(dst + dstlen, src, srclen - 1);
-		dst[dstlen + maxsize - 1] = '\0';
-	}
+	ft_memcpy(dst + dstlen, src, maxsize - dstlen - 1);
+	while (*dst)
+		printf("-- %c\n", *dst++);
 	return (dstlen + srclen);
 }
