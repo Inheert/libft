@@ -16,15 +16,18 @@ size_t	ft_strlcat(char *dst, const char *src, size_t maxsize)
 {
 	size_t	dstlen;
 	size_t	srclen;
+	int		i;
 
 	dstlen = ft_strlen(dst);
 	srclen = ft_strlen(src);
-	if (dstlen > maxsize)
-		dstlen = maxsize;
-	if (dstlen == maxsize)
+	i = 0;
+	if (dstlen >= maxsize)
 		return (maxsize + srclen);
-	ft_memcpy(dst + dstlen, src, maxsize - dstlen - 1);
-	while (*dst)
-		printf("-- %c\n", *dst++);
+	while (src[i] != '\0' && (dstlen + i) < (maxsize - 1))
+	{
+		dst[dstlen + i] = src[i];
+		i++;
+	}
+	dst[dstlen + i] = '\0';
 	return (dstlen + srclen);
 }
