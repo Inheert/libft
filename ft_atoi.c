@@ -23,7 +23,7 @@ int	ft_atoi(const char *str)
 	is_first_loop = 1;
 	while (*str++)
 	{
-		if (9 <= *str && *str <= 13 && num == 0)
+		if ((9 <= *str && *str <= 13) || num == 0 || num == ' ')
 			continue ;
 		else if (*str == '-')
 		{
