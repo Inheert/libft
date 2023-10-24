@@ -3,10 +3,13 @@
 
 int	main(void)
 {
-	int		size = 10;
-	char	*src = "lorem ipsum dolor sit amet";
-	char	dest[14] = "a";
-
-	printf("%zu -- %s", ft_strlcat(dest, src, size), dest);
-	return (0);
+        int size = 8539;
+ 
+        void * d1 = ft_calloc(size, sizeof(int));
+        void * d2 = calloc(size, sizeof(int));
+        if (memcmp(d1, d2, size * sizeof(int)))
+                exit(1);
+        free(d1);
+        free(d2);
+        exit(0);
 }

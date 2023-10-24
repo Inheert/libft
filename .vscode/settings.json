@@ -3,6 +3,7 @@
         "libft.h": "c",
         "string": "c",
         "iosfwd": "c",
-        "bit": "c"
+        "bit": "c",
+        "string.h": "c"
     }
 }
