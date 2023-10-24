@@ -6,7 +6,7 @@
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:51:01 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/19 14:10:11 by tclaereb         ###   ########.fr       */
+/*   Updated: 2023/10/24 17:27:13 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 			*_dest++ = *_src++;
 	else
 		while (n--)
-		_dest[n] = _src[n];
+			_dest[n] = _src[n];
 	return (dest);
 }
