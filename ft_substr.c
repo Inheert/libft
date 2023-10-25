@@ -6,7 +6,7 @@
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:43:58 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/25 16:51:40 by tclaereb         ###   ########.fr       */
+/*   Updated: 2023/10/25 17:01:46 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t maxsize)
 	else
 	{
 		if (maxsize <= len - start)
-			new_s = (char *)malloc((maxsize + 1) * sizeof(char));
+			new_s = (char *)ft_calloc(maxsize + 1, sizeof(char));
 		else
-			new_s = (char *)malloc((len - start + 1) * sizeof(char));
+			new_s = (char *)ft_calloc((len - start + 1), sizeof(char));
 		if (!new_s)
 			return (NULL);
 		if (maxsize == (size_t) - 1)
