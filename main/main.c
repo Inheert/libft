@@ -3,8 +3,5 @@
 
 int	main(void)
 {
-	char *str = "A";
-	size_t size = 0;
-	char *ret = ft_substr(str, 0, size);
-	printf("\n--%s--\n", ret);
+	printf("\n--%s--%zu\n", ft_substr("hola", 0, (size_t)-1), (size_t)-1);
 }
