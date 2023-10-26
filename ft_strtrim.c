@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/24 15:20:37 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/26 14:20:42 by tclaereb         ###   ########.fr       */
+/*   Created: 2023/10/26 14:04:23 by tclaereb          #+#    #+#             */
+/*   Updated: 2023/10/26 14:51:51 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nelem, size_t size)
+static 
+
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*ptr;
-	size_t	size_max;
-
-	size_max = (size_t)-1;
-	if (size != 0)
-		if (nelem > size_max / size)
-			return (NULL);
-
-	ptr = (char *)malloc(size * nelem);
-	if (ptr)
-		ft_bzero(ptr, nelem * size);
-	else
-		return (NULL);
-	return (ptr);
+	char	*str;
+	str = (char *)s1;
+	return (str);
 }
