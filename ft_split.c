@@ -6,11 +6,20 @@
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:13:20 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/27 16:25:19 by tclaereb         ###   ########.fr       */
+/*   Updated: 2023/10/28 22:46:59 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static char	**freeptr(char **list)
+{
+	while (*list)
+		list--;
+	while (*list)
+		free(list);
+	return (NULL);
+}
 
 char	**ft_split(char const *s, char c)
 {
@@ -24,20 +33,52 @@ char	**ft_split(char const *s, char c)
 	itemlen = 0;
 	while (*s)
 	{
-		if (*s++ == c)
-			listlen++;
-		slen++;
-	}
-	s -= slen;
-	list = ft_calloc(listlen, sizeof(char *));
-	while (*s)
-	{
-		if (*s == c)
+		if (*s++ == c && itemlen != 0)
 		{
+			listlen++;
 			itemlen = 0;
+			slen++;
 			continue ;
 		}
+		else
+			itemlen++;
+		slen++;
 	}
-	*list = "rwoubgrwgwngpiow";
-	return (list);
+	if (listlen == 0)
+		return (NULL);
+	s -= slen;
+	list = ft_calloc(listlen + 1, sizeof(char *));
+	if (!list)
+		return (NULL);
+	itemlen = 0;
+	while (*s)
+	{
+		slen--;
+		if ((*s == c || &*s == &s[slen]) && itemlen != 0)
+		{
+			if (&*s == &s[slen])
+			{
+				itemlen++;
+				s++;
+			}
+			*list = (char *)malloc((itemlen + 1) * sizeof(char));
+			if (!*list)
+				return (freeptr(list));
+			ft_strlcpy(*list, s - itemlen, itemlen + 1);
+			itemlen = 0;
+			list++;
+			s++;
+			continue ;
+		}
+		else if ((*s == c || &*s == &s[slen]) && itemlen == 0)
+		{
+			s++;
+			continue ;
+		}
+		itemlen++;
+		s++;
+	}
+	*list = NULL;
+	printf("-%zu", listlen);
+	return (list - listlen);
 }
