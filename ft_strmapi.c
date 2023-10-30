@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/25 10:49:22 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/30 13:04:51 by tclaereb         ###   ########.fr       */
+/*   Created: 2023/10/30 11:38:17 by tclaereb          #+#    #+#             */
+/*   Updated: 2023/10/30 12:04:09 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strdup(const char *s)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	size_t	len;
-	char	*new_s;
+	char			*new_s;
+	unsigned int	i;
+	size_t			len;
 
-	len = ft_strlen(s) + 1;
-	new_s = ((char *)ft_calloc(len, sizeof(char)));
+	if (!s || !f)
+		return (NULL);
+	len = ft_strlen(s);
+	i = 0;
+	new_s = ft_calloc(len + 1, sizeof(char));
 	if (!new_s)
 		return (NULL);
-	ft_strlcpy(new_s, s, len);
+	while (s[i])
+	{
+		new_s[i] = f(i, s[i]);
+		i++;
+	}
+	new_s[i] = '\0';
 	return (new_s);
 }
