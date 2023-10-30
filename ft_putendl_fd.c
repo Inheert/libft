@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putendl.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 12:11:38 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/30 13:04:34 by tclaereb         ###   ########.fr       */
+/*   Updated: 2023/10/30 16:17:36 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putendl_ft(char *d, int fd)
+void	ft_putendl_fd(char *d, int fd)
 {
 	ft_putstr_fd(d, fd);
 	ft_putchar_fd('\n', fd);

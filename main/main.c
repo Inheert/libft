@@ -3,6 +3,5 @@
 
 int	main(void)
 {
-	//printf(" - %s\n", ft_itoa(-58059));
-	printf("%s\n", ft_itoa(0));
+	printf("%s", ft_strtrim("abcidefg", "abifge"));
 }
