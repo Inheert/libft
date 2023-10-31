@@ -3,5 +3,7 @@
 
 int	main(void)
 {
-	ft_split("a,,,bceoegw, 5", ',');
+	char	**list = ft_split(",a,ewf,, ,eegw,,,", ',');
+	while(*list)
+		printf("%s\n", *list++);
 }
