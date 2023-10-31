@@ -6,7 +6,7 @@
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:13:20 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/28 22:46:59 by tclaereb         ###   ########.fr       */
+/*   Updated: 2023/10/31 11:26:45 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	**freeptr(char **list)
 	return (NULL);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_splitt(char const *s, char c)
 {
 	char	**list;
 	size_t	listlen;

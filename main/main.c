@@ -3,5 +3,5 @@
 
 int	main(void)
 {
-	printf("%s", ft_strtrim("abcidefg", "abifge"));
+	ft_split("a,,,bceoegw, 5", ',');
 }
