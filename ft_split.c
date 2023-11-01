@@ -1,84 +1,102 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/27 16:13:20 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/31 11:26:45 by tclaereb         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "libft.h"
 
-static char	**freeptr(char **list)
+static unsigned int CountString(const char *s, char c)
 {
-	while (*list)
-		list--;
-	while (*list)
-		free(list);
-	return (NULL);
+    int count = 0;
+    int isInside = 0;
+
+    while (*s)
+    {
+        if (*s++ != c)
+        {
+            if (!isInside)
+            {
+                count++;
+                isInside = 1;
+            }
+        }
+        else
+            isInside = 0;
+    }
+    return (count);
 }
 
-char	**ft_splitt(char const *s, char c)
+static void FreeAll(char **result, unsigned int size)
 {
-	char	**list;
-	size_t	listlen;
-	size_t	slen;
-	size_t	itemlen;
+    while (size--)
+        free(result[size]);
+    free(result);
+}
 
-	listlen = 1;
-	slen = 0;
-	itemlen = 0;
-	while (*s)
-	{
-		if (*s++ == c && itemlen != 0)
-		{
-			listlen++;
-			itemlen = 0;
-			slen++;
-			continue ;
-		}
-		else
-			itemlen++;
-		slen++;
-	}
-	if (listlen == 0)
-		return (NULL);
-	s -= slen;
-	list = ft_calloc(listlen + 1, sizeof(char *));
-	if (!list)
-		return (NULL);
-	itemlen = 0;
-	while (*s)
-	{
-		slen--;
-		if ((*s == c || &*s == &s[slen]) && itemlen != 0)
-		{
-			if (&*s == &s[slen])
-			{
-				itemlen++;
-				s++;
-			}
-			*list = (char *)malloc((itemlen + 1) * sizeof(char));
-			if (!*list)
-				return (freeptr(list));
-			ft_strlcpy(*list, s - itemlen, itemlen + 1);
-			itemlen = 0;
-			list++;
-			s++;
-			continue ;
-		}
-		else if ((*s == c || &*s == &s[slen]) && itemlen == 0)
-		{
-			s++;
-			continue ;
-		}
-		itemlen++;
-		s++;
-	}
-	*list = NULL;
-	printf("-%zu", listlen);
-	return (list - listlen);
+static char *ApplyString(const char *start, const char *end)
+{
+    int len = end - start;
+    char *result = (char *)ft_calloc(len + 1, sizeof(char));
+    
+    if (!result)
+        return (NULL);
+
+    ft_strlcpy(result, start, len + 1);
+    return (result);
+}
+
+static int DetectString(const char *s, char c, char **result)
+{
+    int i = 0;
+    int isInside = 0;
+    const char *start = s;
+
+    while (*s)
+    {
+        if (*s != c)
+        {
+            if (!isInside)
+            {
+                start = s;
+                isInside = 1;
+            }
+        }
+        else
+        {
+            if (isInside)
+            {
+                result[i] = ApplyString(start, s);
+                if (!result[i])
+                    return (0);
+                i++;
+            }
+            isInside = 0;
+        }
+        s++;
+    }
+
+    if (isInside)
+    {
+        result[i] = ApplyString(start, s);
+        if (!result[i])
+            return (0);
+    }
+    return (1);
+}
+
+char **ft_split(const char *s, char c)
+{
+    if (!s)
+        return NULL;
+
+    unsigned int count = CountString(s, c);
+    char **result = (char **)ft_calloc(count + 1, sizeof(char *));
+
+    if (!result)
+        return (NULL);
+
+    if (!DetectString(s, c, result))
+    {
+        FreeAll(result, count);
+        return (NULL);
+    }
+
+    result[count] = NULL;
+
+    return (result);
 }

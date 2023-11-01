@@ -3,7 +3,7 @@
 
 int	main(void)
 {
-	char	**list = ft_split(",a,ewf,, ,eegw,,,", ',');
+	char	**list = ft_split("hello!", ' ');
 	while(*list)
-		printf("%s\n", *list++);
+		printf("**%s\n", *list++);
 }

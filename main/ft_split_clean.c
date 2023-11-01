@@ -49,18 +49,7 @@ static struct ldetails	getlistdetails(char const *s, char c)
 	return (infos);
 }
 
-void	assignvalues(char const *s, char **list, struct ldetails infos)
-{
-	unsigned int	idx;
-
-	idx = infos.idx;
-	while (*idx)
-	{
-		
-	}
-}
-
-char	**ft_split(char const *s, char c)
+char	**ft_splitt(char const *s, char c)
 {
 	char			**list;
 	struct ldetails	infos;
@@ -68,6 +57,5 @@ char	**ft_split(char const *s, char c)
 	list = (char **)ft_calloc(infos.len + 1, sizeof(char *));
 	if (!list)
 		return (NULL);
-	assignvalues(s, list, infos);
 	return (list);
 }
