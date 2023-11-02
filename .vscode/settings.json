@@ -5,6 +5,7 @@
         "iosfwd": "c",
         "bit": "c",
         "string.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "unistd.h": "c"
     }
 }

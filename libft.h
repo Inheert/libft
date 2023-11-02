@@ -7,6 +7,12 @@
 # include <stdlib.h>
 # include <stddef.h>
 
+typedef struct s_list
+{
+	void *content;
+	struct s_list *next;
+}	t_list;
+
 size_t	ft_strlen(const char *str);
 size_t  ft_strlcat(char *dst, const char *src, size_t dst_size);
 size_t  ft_strlcpy(char *dest, const char *src, size_t n);
@@ -42,4 +48,5 @@ void 	*ft_memset(void *ptr, int value, size_t size);
 void 	*ft_memcpy(void *dest, const void *src, size_t size);
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
+t_list	*ft_lstnew(void *content);
 # endif
