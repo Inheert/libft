@@ -3,5 +3,5 @@
 
 int	main(void)
 {
-	printf("\n%p", ft_lstnew((void *)"HEllo"));
+	printf("\n%s", (char *)ft_lstnew("HEllo")->content);
 }
