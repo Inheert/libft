@@ -21,7 +21,16 @@ void    ft_del(void *content)
 	free(content);
 }
 
+int	main(void)
+{
+	char	**s = ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
+	while (*s)
+	{
+		printf("\n%s", *s++);
+	}
+}
 
+/*
 int	main(void)
 {
 	printf("????????????????????");
@@ -40,3 +49,4 @@ int	main(void)
 		item = item->next;
 	}
 }
+*/

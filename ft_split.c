@@ -1,102 +1,102 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/04 17:10:19 by tclaereb          #+#    #+#             */
+/*   Updated: 2023/11/04 17:28:35 by tclaereb         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static unsigned int CountString(const char *s, char c)
+static unsigned int	count_strings(char const *s, char c)
 {
-    int count = 0;
-    int isInside = 0;
+	unsigned int	count;
+	int				is_inside;
 
-    while (*s)
-    {
-        if (*s++ != c)
-        {
-            if (!isInside)
-            {
-                count++;
-                isInside = 1;
-            }
-        }
-        else
-            isInside = 0;
-    }
-    return (count);
+	count = 0;
+	is_inside = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			if (!is_inside)
+			{
+				count++;
+				is_inside = 1;
+			}
+		}
+		else
+			is_inside = 0;
+		s++;
+	}
+	return (count);
 }
 
-static void FreeAll(char **result, unsigned int size)
+static char	*apply_string(const char *s, char c)
 {
-    while (size--)
-        free(result[size]);
-    free(result);
+	char	*str;
+	int		len;
+
+	len = 0;
+	while (s[len] && s[len] != c)
+		len++;
+	if (len == 0)
+		return (NULL);
+	str = (char *)malloc(len + 1);
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s, len + 1);
+	return (str);
 }
 
-static char *ApplyString(const char *start, const char *end)
+static int	fill_result(char **result, char const *s, char c)
 {
-    int len = end - start;
-    char *result = (char *)ft_calloc(len + 1, sizeof(char));
-    
-    if (!result)
-        return (NULL);
+	int		i;
+	int		is_inside;
 
-    ft_strlcpy(result, start, len + 1);
-    return (result);
+	i = 0;
+	is_inside = 0;
+	while (*s)
+	{
+		if (*s != c)
+		{
+			if (!is_inside)
+			{
+				result[i++] = apply_string(s, c);
+				if (!result[i - 1])
+					return (0);
+			}
+			is_inside = 1;
+		}
+		else
+			is_inside = 0;
+		s++;
+	}
+	return (1);
 }
 
-static int DetectString(const char *s, char c, char **result)
+char	**ft_split(char const *s, char c)
 {
-    int i = 0;
-    int isInside = 0;
-    const char *start = s;
+	unsigned int	count;
+	char			**result;
 
-    while (*s)
-    {
-        if (*s != c)
-        {
-            if (!isInside)
-            {
-                start = s;
-                isInside = 1;
-            }
-        }
-        else
-        {
-            if (isInside)
-            {
-                result[i] = ApplyString(start, s);
-                if (!result[i])
-                    return (0);
-                i++;
-            }
-            isInside = 0;
-        }
-        s++;
-    }
-
-    if (isInside)
-    {
-        result[i] = ApplyString(start, s);
-        if (!result[i])
-            return (0);
-    }
-    return (1);
-}
-
-char **ft_split(const char *s, char c)
-{
-    if (!s)
-        return NULL;
-
-    unsigned int count = CountString(s, c);
-    char **result = (char **)ft_calloc(count + 1, sizeof(char *));
-
-    if (!result)
-        return (NULL);
-
-    if (!DetectString(s, c, result))
-    {
-        FreeAll(result, count);
-        return (NULL);
-    }
-
-    result[count] = NULL;
-
-    return (result);
+	if (!s)
+		return (NULL);
+	count = count_strings(s, c);
+	result = (char **)malloc((count + 1) * sizeof(char *));
+	if (!result)
+		return (NULL);
+	if (!fill_result(result, s, c))
+	{
+		while (count > 0)
+			free(result[--count]);
+		free(result);
+		return (NULL);
+	}
+	result[count] = NULL;
+	return (result);
 }
