@@ -20,14 +20,14 @@ void    ft_del(void *content)
 {
 	free(content);
 }
-
+#include <string.h>
 int	main(void)
 {
-	char	**s = ft_split("^^^1^^2a,^^^^3^^^^--h^^^^", '^');
-	while (*s)
-	{
-		printf("\n%s", *s++);
-	}
+	char	s[15];
+	char 	*ss = "Haaaa";
+	size_t	n = 2;
+
+	printf("%s", (char *)memcpy(s, ss, n));
 }
 
 /*
