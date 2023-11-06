@@ -20,14 +20,10 @@ void    ft_del(void *content)
 {
 	free(content);
 }
-#include <string.h>
+
 int	main(void)
 {
-	char	s[15];
-	char 	*ss = "Haaaa";
-	size_t	n = 2;
-
-	printf("%s", (char *)memcpy(s, ss, n));
+	printf("%d", ft_lstsize(NULL));
 }
 
 /*
