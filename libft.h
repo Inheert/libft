@@ -13,8 +13,6 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 
-// STDIO INCLUDE TO DELETE !!
-# include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
