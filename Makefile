@@ -69,4 +69,4 @@ re: fclean all
 bonus: $(OBJ_BONUS)
 	ar crs $(NAME) $^
 
-.PHONY: all clean flcean re bonus
+.PHONY: all clean fclean re bonus
