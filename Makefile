@@ -1,3 +1,4 @@
+NAME = libft.a
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -48,7 +49,6 @@ SRC_BONUS = ft_lstadd_back_bonus.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
-NAME = libft.a
 
 all: $(NAME)
 
