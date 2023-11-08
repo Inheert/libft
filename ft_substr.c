@@ -6,7 +6,7 @@
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 14:43:58 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/11/04 17:35:06 by tclaereb         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:22:55 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,20 @@ static char	*set(char const *s, unsigned int start, size_t len, size_t maxsize)
 	return (new_s);
 }
 
-char	*ft_substr(char const *s, unsigned int start, size_t maxsize)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t	len;
+	size_t	slen;
 	char	*new_s;
 
 	if (!s)
 		return (NULL);
-	len = ft_strlen(s);
-	if (start >= len || maxsize == 0)
+	slen = ft_strlen(s);
+	if (start >= slen || len == 0)
 	{
 		new_s = (char *)ft_calloc(1, sizeof(char));
 		if (!new_s)
 			return (NULL);
 		return (new_s);
 	}
-	return (set(s, start, len, maxsize));
+	return (set(s, start, slen, len));
 }
