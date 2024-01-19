@@ -6,7 +6,7 @@
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:05:27 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/10/30 16:01:11 by tclaereb         ###   ########.fr       */
+/*   Updated: 2024/01/19 17:09:35 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,40 +32,32 @@ static int	countsize(long n)
 	return (count);
 }
 
-static void	recursive(char *ptr, int n, unsigned int size)
+static void	recursive(char *ptr, long int n, int *i)
 {
-	unsigned int	ln;
-	char			c[1];
-
 	if (n < 0)
 	{
-		ln = (unsigned int)n * -1;
-		*ptr = '-';
+		ptr[*i] = '-';
+		n = -n;
+		(*i)++;
 	}
-	else
-		ln = (unsigned int)n;
-	if (ln / 10 >= 1)
-	{
-		recursive(ptr, ln / 10, size);
-		recursive(ptr, ln % 10, size);
-	}
-	else
-	{
-		*c = ln + 48;
-		ft_strlcat(ptr, c, size);
-	}
+	if (n > 9)
+		recursive(ptr, n / 10, i);
+	ptr[*i] = n % 10 + '0';
+	(*i)++;
 }
 
 char	*ft_itoa(int n)
 {
 	char	*ptr;
 	int		size;
+	int		i;
 
+	i = 0;
 	size = countsize((long)n);
 	ptr = ft_calloc(size, sizeof(char));
 	if (!ptr)
 		return (NULL);
-	ft_bzero(ptr, size);
-	recursive(ptr, n, size);
+	recursive(ptr, n, &i);
+	ptr[i] = '\0';
 	return (ptr);
 }
