@@ -6,7 +6,7 @@
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/17 20:04:14 by Theo              #+#    #+#             */
-/*   Updated: 2024/02/19 13:11:19 by tclaereb         ###   ########.fr       */
+/*   Updated: 2023/11/08 14:29:14 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,8 @@ int	ft_atoi(const char *nptr)
 	}
 	else if (*nptr == '+')
 		nptr++;
-	while (*nptr)
+	while (*nptr >= '0' && *nptr <= '9')
 	{
-		if (!(*nptr >= '0' && *nptr <= '9'))
-			return (-1);
-		if ((long long)result * 10 + (*nptr - '0') > INT_MAX)
-			return (-1);
 		result = result * 10 + (*nptr - '0');
 		nptr++;
 	}
