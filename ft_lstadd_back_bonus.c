@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd_back_bonus.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 16:32:43 by tclaereb          #+#    #+#             */
-/*   Updated: 2023/11/03 14:17:25 by tclaereb         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:22:02 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while (item->next)
 		item = item->next;
 	item->next = new;
+	new->previous = item;
 }
