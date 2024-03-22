@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   arg_percent.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 20:04:14 by Theo              #+#    #+#             */
-/*   Updated: 2024/03/22 13:45:46 by tclaereb         ###   ########.fr       */
+/*   Created: 2023/12/01 14:43:12 by tclaereb          #+#    #+#             */
+/*   Updated: 2024/03/22 13:44:49 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
-int	ft_putchar_fd(char c, int fd)
+int	arg_percent(void)
 {
-	if (write(fd, &c, 1) == -1)
+	if (ft_putchar_fd('%', 1) == -1)
 		return (-1);
 	return (1);
 }

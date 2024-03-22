@@ -6,7 +6,7 @@
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/06 11:41:51 by tclaereb          #+#    #+#             */
-/*   Updated: 2024/03/22 13:25:46 by tclaereb         ###   ########.fr       */
+/*   Updated: 2024/03/22 13:51:57 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <stddef.h>
+# include <stdarg.h>
+# include <stdint.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 1
@@ -50,7 +53,9 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n);
 char	*ft_strrchr(const char *s, int c);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_substr(char const *s, unsigned int start, size_t maxsize);
-void	ft_putchar_fd(char c, int fd);
+char	*ft_putadress_base16(unsigned long long n);
+char	*ft_putnbr_base16(unsigned int n);
+int		ft_putchar_fd(char c, int fd);
 void	ft_putendl_fd(char *d, int fd);
 void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
@@ -73,4 +78,14 @@ t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 char	*get_next_line(int fd);
+
+int				arg_c(va_list args);
+int				arg_s(va_list args);
+int				arg_d(va_list args);
+int				arg_u(va_list args);
+int				arg_p(va_list args);
+int				arg_x(va_list args, int upper);
+int				arg_percent(void);
+int				ft_printf(const char *format, ...);
+
 #endif

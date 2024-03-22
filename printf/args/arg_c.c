@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   arg_c.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tclaereb <tclaereb@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/17 20:04:14 by Theo              #+#    #+#             */
-/*   Updated: 2024/03/22 13:45:46 by tclaereb         ###   ########.fr       */
+/*   Created: 2023/12/01 14:43:12 by tclaereb          #+#    #+#             */
+/*   Updated: 2024/03/22 13:44:32 by tclaereb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../libft.h"
 
-int	ft_putchar_fd(char c, int fd)
+int	arg_c(va_list args)
 {
-	if (write(fd, &c, 1) == -1)
-		return (-1);
-	return (1);
+	int	c;
+
+	c = va_arg(args, int);
+	return (ft_putchar_fd(c, 1));
 }

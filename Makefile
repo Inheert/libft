@@ -16,6 +16,8 @@ SOURCES = ft_atoi.c \
 		ft_memcpy.c \
 		ft_memmove.c \
 		ft_memset.c \
+		ft_putaddress_base16.c \
+		ft_putnbr_base16.c \
 		ft_putchar_fd.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
@@ -36,7 +38,14 @@ SOURCES = ft_atoi.c \
 		ft_substr.c \
 		ft_tolower.c \
 		ft_toupper.c \
-		get_next_line.c
+		get_next_line.c \
+		printf/ft_printf.c \
+		printf/args/arg_c.c \
+		printf/args/arg_d.c\
+		printf/args/arg_p.c \
+		printf/args/arg_percent.c \
+		printf/args/arg_s.c \
+		printf/args/arg_x.c \
 
 SRC_BONUS = ft_lstadd_back_bonus.c \
 			ft_lstadd_front_bonus.c \
